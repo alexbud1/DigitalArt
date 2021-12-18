@@ -27,7 +27,6 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
 # Create your models here.
 class CustomUser(AbstractBaseUser):
     RANKS = (("Початківець","Початківець"),("Професіонал","Професіонал"))
