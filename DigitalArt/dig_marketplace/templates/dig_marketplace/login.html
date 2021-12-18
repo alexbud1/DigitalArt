@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign in</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Mulish' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Mukta' rel='stylesheet'>
+
+</head>
+<body>
+	<div id="login_screen">
+		<img src="../../static/images/login_bg.jpg" id="login_bg_img">
+		<div id="bg_login_form">
+
+
+			<div id="login_text">
+				<h1>Sign in</h1>
+				<div id="login_textblock">
+					<h3 id="newuser_txt">New user?</h3>
+					<h3 id="create_acc_txt" onclick="Create()">Create an account</h3>
+				</div>
+				<h3 id="login_Email_txt">Email adress</h3>
+				<h3 id="login_password_txt">Password</h3>	
+				<form method="POST" autocomplete="on">
+					{% csrf_token %}
+
+					<div id="tab0">
+						<p id="log_email">
+							<input type="email" id="id_email" name="email" required>
+						</p>
+						<button type="button" value="Continue" id="id_cont" onclick="Continue()">Continue</button>
+					</div>
+
+					<div id="tab1">
+						<p id="log_password">
+							<input type="password" id="id_password" name="password1" required>
+						</p>
+						<input type="submit" value="Sign in" id="id_submit">
+					</div>
+
+				</form>	
+				<div id="logs">
+					<div id="login_or">
+						<div class="login_or_line"></div>	
+						<p id="login_or_txt">Or</p>
+						<div class="login_or_line"></div>	
+					</div>
+					<div id="signin_google">
+						<img src="../../static/images/google.jpg" id="Google_img">
+						<p class="signin">Continue with Google</p>
+					</div>
+					<div id="signin_facebook">
+						<img src="../../static/images/facebook.jpg" id="Facebook_img">
+						<p class="signinF">Continue with Facebook</p>
+					</div>
+					<div id="signin_apple">
+						<img src="../../static/images/apple.png" id="Facebook_img">
+						<p class="signinF">Continue with Apple</p>
+					</div>
+				</div>
+				
+			</div>
+
+
+		</div>
+	</div>
+
+
+	<script>
+		// $(document).ready(function() {
+		// 	  $('#id_cont').click(function() {
+		// 	    if (!$('#id_email').val()) {
+		// 	      alert('Enter your name!');
+		// 	    }
+		// 	  })
+		// 	});
+		// Continue();
+	var url = "http://127.0.0.1:8000/signup/"
+		function Continue(){
+			if(document.getElementById("id_email").value != ''){
+				console.log("filled")
+				
+				document.getElementById("login_Email_txt").style.display = "none";
+				document.getElementById("login_password_txt").style.display = "block";
+				document.getElementById("tab0").style.display = "none";
+				document.getElementById("log_email").style.display = "none";
+				document.getElementById("id_email").style.display = "none";
+				document.getElementById("id_cont").style.display = "none";
+
+				document.getElementById("tab1").style.display = "block";
+				document.getElementById("logs").style.display = "none";
+			}else{
+				document.getElementById("log_email").style.borderBottom = "2px solid #F24935";
+				document.getElementById("log_email").style.animation = "blink 1s";
+				document.getElementById("log_email").style. animationIterationCount = "3";
+			}
+
+
+
+
+
+			
+		}
+		function Create(){
+				window.location = url;			
+			
+		}
+
+
+
+	</script>
+</body>
+</html>

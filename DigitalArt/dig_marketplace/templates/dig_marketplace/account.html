@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Account</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Mulish' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Mukta' rel='stylesheet'>
+
+</head>
+<body>
+	<!-- {% if user.is_authenticated %}
+        <p>Welcome {{ user.email }} !!!</p>       
+    {% endif %} -->
+    <div id="account_main">
+    	<div id="account_header">
+    		<div id="acc_logo" >
+    			<img src="../../static/images/acc_logo.png" >
+    		</div>
+    		<p id="ArtCommunity">ArtCommunity</p>
+    		<div id="search_bar">
+    			<img src="../../static/images/search.svg" id="search_img">
+    			<input type="text" placeholder="Search.." id="acc_find">    			
+    		</div>
+    		<img src="../../static/images/acc_icon.svg" id="acc_icon">
+    	</div>
+    	<div id="bg_rectangle"></div>
+    	<div id="profile_div">
+    		<img src="../../static/images/user_logo.svg" id="user_logo">
+    		<p id="username_acc">{{ user.first_name }} {{ user.last_name }}</p>
+    		<p id="user_type">Author</p>
+    		<img src="../../static/images/edit.svg" id="edit_acc">
+    		<img src="../../static/images/verify.svg" id="verify_acc">
+    		<p id="reg_date">MEMBER SINCE: {{ user.month_joined }} {{ user.day_joined }},2021</p>
+    	</div>
+    	<div id="acc_categories">
+    		<div id="cat0">
+    			<p class="cat_text_white" id="cattext0">Works</p>
+    		</div>
+    		<div id="cat1">
+    			<p class="cat_text_black" id="cattext1">Liked</p>
+    			
+    		</div>
+    		<div id="cat2">
+    			<p class="cat_text_black" id="cattext2">Saved</p>
+    			
+    		</div>
+    		<div id="cat3">
+    			<p class="cat_text_black" id="cattext3">Statistics</p>
+    			
+    		</div>
+    		<div id="cat4">
+    			<p class="cat_text_black" id="cattext4">Transactions</p>
+    			
+    		</div>
+    	</div>
+
+    </div>
+
+	<script>
+		var a = [];
+		a[0] = true;
+		var numero = 5;     
+		for (var i = 1; i < numero; i++) {
+		  a.push(false);
+		}
+			
+
+		document.getElementById("cat0").addEventListener("click", switch_cat0);
+
+		document.getElementById("cat1").addEventListener("click", switch_cat1);
+		document.getElementById("cat2").addEventListener("click", switch_cat2);
+		document.getElementById("cat3").addEventListener("click", switch_cat3);
+		document.getElementById("cat4").addEventListener("click", switch_cat4);
+
+		function switch_cat0(){
+			// var element = document.getElementById("cat0");
+			console.log(a)
+			// if n (!= a.find(true)){
+			// 	console.log("alert")
+			// 	element.classList.toggle("cat_text_white");
+			// }   	
+			// if (a.indexOf(true) != 0){
+			// 	console.log("alert")
+			// }		
+			if(a[0] == true){
+				console.log('removed')
+				// document.getElementById("cat0").style.removeProperty('backgroundColor');
+				document.getElementById("cat0").style.removeProperty('background-color')
+				document.getElementById("cat0").style.removeProperty('borderRadius');
+
+			}
+		}
+		function switch_cat1(){
+			var element = document.getElementById("cattext1");
+			console.log(1)
+			if (a.indexOf(true) != 1){
+				console.log("alert")
+				
+
+			}	
+			 			
+		}
+		function switch_cat2(){
+			var element = document.getElementById("cat2");
+			console.log(2)
+			if (a.indexOf(true) != 2){
+				console.log("alert")
+			}	
+						
+		}
+		function switch_cat3(){
+			var element = document.getElementById("cat3");
+			console.log(3)
+			if (a.indexOf(true) != 3){
+				console.log("alert")
+			}	
+						
+		}
+		function switch_cat4(){
+			var element = document.getElementById("cat4");
+			console.log(4)
+			if (a.indexOf(true) != 4){
+				console.log("alert")
+			}				
+		}
+	</script>
+</body>
+</html>
