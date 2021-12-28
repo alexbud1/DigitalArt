@@ -9,4 +9,5 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('logout/', views.logout_page, name="logout_page"),
     path('account/', views.account_page, name='account'),
-]
+    path('check_email_exist/', views.check_email_exist, name = "check_email_exist"),
+] 

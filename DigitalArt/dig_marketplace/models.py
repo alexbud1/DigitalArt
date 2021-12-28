@@ -33,6 +33,7 @@ class CustomUser(AbstractBaseUser):
     first_name = models.CharField("first_name", max_length=50, blank=True)
     last_name = models.CharField("last_name", max_length=50, blank=True)
     email = models.CharField("email", max_length=250, unique=True)
+    email_hash = models.CharField("email_hash", max_length=250, blank=True)
     # date_joined = models.DateField('date_creat',auto_now_add=True, null=True)
     month_joined = models.CharField('month_joined',max_length=30,blank=True)
     day_joined = models.IntegerField('day_joined',blank=True,default=0)

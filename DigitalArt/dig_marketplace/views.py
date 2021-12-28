@@ -6,6 +6,7 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from hashlib import sha256
 
 def login_page(request):
     if request.user.is_authenticated:
@@ -43,8 +44,9 @@ def signup_page(request):
             user.month_joined= datetime.now().strftime('%B')
             user.day_joined= datetime.now().day
             user.year_joined= datetime.now().year
+            print(request.POST.get("email"))
+            user.email_hash = sha256(request.POST.get("email").encode('utf-8')).hexdigest()
             user.save()
-            print(datetime.now().day)
             ###### redirect works with name in urls.py
             return redirect('homepage')
     return render(request, 'dig_marketplace/sign_up.html', context)
@@ -58,3 +60,10 @@ def account_page(request):
 
 def test_page(request):
     return render(request, 'dig_marketplace/index.html')
+
+def check_email_exist(request):
+    email=request.POST.get("email")
+    if CustomUser.objects.filter(email_hash=email).exists():
+        return HttpResponse(True)
+    else:
+        return HttpResponse(False)
